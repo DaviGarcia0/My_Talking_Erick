@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5ea22eeeab049c84c8dfd29192e2d249
+guid: d467d7630dcb6254caf190000547f8cb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -91,28 +91,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: OIP-removebg-preview (1) 1_0
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 39
-        width: 193
-        height: 189
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b231d45580e8368468d7a327419bd50b
-      internalID: 1693026509
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -123,13 +102,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      OIP-removebg-preview (1) 1_0: 1693026509
-      OIP-removebg-preview (1) 1_1: 46074
-      OIP-removebg-preview (1) 1_2: -1249773376
-      OIP-removebg-preview (1) 1_3: 695378771
-      OIP-removebg-preview (1) 1_4: -839625759
-      OIP-removebg-preview (1) 1_5: -819907476
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
