@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: eaf67f00e5ff8ec43a6c6acad0a29e4c
+guid: a1206bd210970fc4c98cf274e8b88b65
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - foodSprite: {fileID: 21300000, guid: 6cd24f601533c5b4cb7d2f18209193ae, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
