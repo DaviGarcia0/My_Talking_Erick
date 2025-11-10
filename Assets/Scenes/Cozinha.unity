@@ -307,7 +307,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 48570149}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &48570149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1076,7 +1088,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 178067808}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &178067808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1718,7 +1742,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 313952544}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &313952544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2380,7 +2416,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 468945806}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &468945806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4287,6 +4335,7 @@ GameObject:
   - component: {fileID: 880456706}
   - component: {fileID: 880456705}
   - component: {fileID: 880456708}
+  - component: {fileID: 880456709}
   m_Layer: 5
   m_Name: Food5
   m_TagString: Untagged
@@ -4357,7 +4406,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 880456706}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &880456706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4409,6 +4470,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodSprite: {fileID: 21300000, guid: 19b92f3fe40e6e446a4ee497a0f0c63b, type: 3}
+--- !u!114 &880456709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880456703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74b4c6a89871f2345b1562c1674bd771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectorPanel: {fileID: 0}
+  painelComidas: {fileID: 0}
+  painelBebidas: {fileID: 0}
 --- !u!1 &906808026
 GameObject:
   m_ObjectHideFlags: 0
@@ -4901,14 +4977,14 @@ MonoBehaviour:
   - {fileID: 824845144}
   - {fileID: 2014215940}
   - {fileID: 2068311881}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1199694490}
   - {fileID: 1693848770}
   - {fileID: 1488190742}
   - {fileID: 587473030}
   - {fileID: 1799393594}
   - {fileID: 115819465}
   - {fileID: 932609187}
+  - {fileID: 978374691}
 --- !u!1 &939559014
 GameObject:
   m_ObjectHideFlags: 0
@@ -6853,14 +6929,14 @@ MonoBehaviour:
   - {fileID: 824845144}
   - {fileID: 2014215940}
   - {fileID: 2068311881}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1199694490}
   - {fileID: 1693848770}
   - {fileID: 1488190742}
   - {fileID: 587473030}
   - {fileID: 1799393594}
   - {fileID: 115819465}
   - {fileID: 932609187}
+  - {fileID: 978374691}
 --- !u!1 &1234274874
 GameObject:
   m_ObjectHideFlags: 0
@@ -6944,7 +7020,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1234274877}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1234274877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7149,14 +7237,14 @@ MonoBehaviour:
   - {fileID: 824845144}
   - {fileID: 2014215940}
   - {fileID: 2068311881}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1199694490}
   - {fileID: 1693848770}
   - {fileID: 1488190742}
   - {fileID: 587473030}
   - {fileID: 1799393594}
   - {fileID: 115819465}
   - {fileID: 932609187}
+  - {fileID: 978374691}
 --- !u!1 &1384235432
 GameObject:
   m_ObjectHideFlags: 0
@@ -8768,7 +8856,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1952010338}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1952010335}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1952010338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8973,14 +9073,14 @@ MonoBehaviour:
   - {fileID: 824845144}
   - {fileID: 2014215940}
   - {fileID: 2068311881}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1199694490}
   - {fileID: 1693848770}
   - {fileID: 1488190742}
   - {fileID: 587473030}
   - {fileID: 1799393594}
   - {fileID: 115819465}
   - {fileID: 932609187}
+  - {fileID: 978374691}
 --- !u!1 &2014215940
 GameObject:
   m_ObjectHideFlags: 0
@@ -9869,7 +9969,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2112774797}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2112774797
 MonoBehaviour:
   m_ObjectHideFlags: 0
