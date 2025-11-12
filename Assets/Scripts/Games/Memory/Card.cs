@@ -1,31 +1,60 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-public class Card : MonoBehaviour
+using UnityEngine.EventSystems;
+
+public class Card : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField] private Image iconImage;
+    public int cardId;
+    public Sprite frontImage;
+    public Sprite backImage;
 
-    public Sprite HiddenIconSprite;
-    public Sprite iconSprite;
+    private Image image;
+    private GameController controller;
+    private bool isFlipped = false;
 
-    public bool isSelected;
-
-    public void SetIconSprite(Sprite sp)
+    private void Awake()
     {
-        iconSprite = sp;
+        // Garante que sempre há um Image (mesmo que o prefab tenha sido alterado)
+        image = GetComponent<Image>();
+        if (image == null)
+        {
+            Debug.LogError("❌ Nenhum componente Image encontrado no prefab da carta!");
+        }
+
+        controller = FindObjectOfType<GameController>();
+        if (controller == null)
+        {
+            Debug.LogError("❌ Nenhum GameController encontrado na cena!");
+        }
     }
 
-    public void Show()
+    private void Start()
     {
-        iconImage.sprite = iconSprite;
-        isSelected = true;
+        ShowBack(); // começa virado pra baixo
     }
 
-    public void Hide()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        iconImage.sprite = HiddenIconSprite;
-        isSelected = false;
+        if (!isFlipped)
+        {
+            ShowFront();
+            controller.CardRevealed(this);
+        }
     }
 
+    public void ShowFront()
+    {
+        if (image == null) return;
+
+        image.sprite = frontImage;
+        isFlipped = true;
+    }
+
+    public void ShowBack()
+    {
+        if (image == null) return;
+
+        image.sprite = backImage;
+        isFlipped = false;
+    }
 }
