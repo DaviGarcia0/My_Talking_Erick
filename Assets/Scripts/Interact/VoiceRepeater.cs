@@ -1,11 +1,18 @@
 using UnityEngine;
+using System;
 using System.Collections;
 
 public class VoiceRepeater : MonoBehaviour
 {
+    [Header("Componente de áudio")]
     public AudioSource audioSource;
+
     private string nomeDispositivo;
     private bool gravando = false;
+
+    // Eventos para controlar animações
+    public Action OnAudioStart;
+    public Action OnAudioEnd;
 
     void Start()
     {
@@ -20,6 +27,10 @@ public class VoiceRepeater : MonoBehaviour
         }
     }
 
+    // Retorna se o microfone está gravando
+    public bool GravandoAtivo() => gravando;
+
+    // Alterna entre iniciar e parar a gravação
     public void AlternarGravacao()
     {
         if (!gravando)
@@ -39,10 +50,8 @@ public class VoiceRepeater : MonoBehaviour
         Debug.Log("🎤 Iniciando gravação...");
         gravando = true;
 
-        // Inicia a gravação com duração máxima de 10 segundos (você pode aumentar)
         audioSource.clip = Microphone.Start(nomeDispositivo, false, 10, 44100);
 
-        // Espera o microfone começar
         while (!(Microphone.GetPosition(nomeDispositivo) > 0))
             yield return null;
 
@@ -54,21 +63,39 @@ public class VoiceRepeater : MonoBehaviour
         if (!gravando) return;
 
         gravando = false;
+
+        int length = Microphone.GetPosition(nomeDispositivo);
         Microphone.End(nomeDispositivo);
 
-        Debug.Log("⏹️ Parou de gravar. Pronto para reproduzir.");
-        Debug.Log($"Duração capturada: {audioSource.clip.length:F2} segundos");
+        if (length <= 0)
+        {
+            Debug.LogWarning("Nenhum som foi capturado!");
+            return;
+        }
 
-        if (audioSource.clip != null && audioSource.clip.length > 0.1f)
-        {
-            audioSource.loop = false;
-            audioSource.Stop();
-            audioSource.PlayOneShot(audioSource.clip);
-            Debug.Log("🔊 Reproduzindo o áudio gravado...");
-        }
-        else
-        {
-            Debug.LogWarning("Nenhum som foi capturado (áudio vazio).");
-        }
+        float[] samples = new float[length * audioSource.clip.channels];
+        audioSource.clip.GetData(samples, 0);
+
+        AudioClip novoClip = AudioClip.Create("GravacaoReal", length, audioSource.clip.channels, audioSource.clip.frequency, false);
+        novoClip.SetData(samples, 0);
+
+        audioSource.clip = novoClip;
+        audioSource.loop = false;
+
+        // ✅ Dispara evento de início da reprodução
+        OnAudioStart?.Invoke();
+
+        audioSource.Play();
+
+        // ✅ Coroutine para disparar evento quando terminar
+        StartCoroutine(AudioTerminou(novoClip.length));
+
+        Debug.Log($"⏹️ Reproduzindo áudio de {novoClip.length:F2} segundos");
+    }
+
+    private IEnumerator AudioTerminou(float duracao)
+    {
+        yield return new WaitForSeconds(duracao);
+        OnAudioEnd?.Invoke();
     }
 }

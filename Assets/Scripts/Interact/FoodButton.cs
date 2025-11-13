@@ -9,7 +9,8 @@ public class FoodButton : MonoBehaviour
     {
         GetComponent<Button>().onClick.AddListener(() =>
         {
-            FoodSelector.Instance.AddFood(foodSprite);
+            if (FoodSelector.Instance != null)
+                FoodSelector.Instance.AddFood(foodSprite);
         });
     }
 }

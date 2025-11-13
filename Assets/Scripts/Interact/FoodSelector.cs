@@ -7,53 +7,74 @@ public class FoodSelector : MonoBehaviour
     public static FoodSelector Instance;
 
     [Header("Referências")]
-    public Image selectedFoodImage;
     public GameObject panel;
-
-    [Header("Setas de navegação")]
+    public Image selectedFoodImage;
     public GameObject leftArrow;
     public GameObject rightArrow;
 
-    [Header("Lista de comidas selecionadas")]
-    public List<Sprite> foods = new List<Sprite>();
+    [HideInInspector]
+    public DragComida currentDraggableFood; // referência para a comida arrastável atual
 
-    private int currentIndex = -1;
-    private bool isVisible = false;
+    private List<Sprite> foods = new List<Sprite>();
+    private int currentIndex = 0;
 
     void Awake()
     {
-        Instance = this;
-        HideSelector();
+        if (Instance == null)
+            Instance = this;
+        else if (Instance != this)
+            Destroy(gameObject);
     }
 
+    void Start()
+    {
+        if (panel != null)
+            panel.SetActive(false);
+    }
+
+    // Adiciona novo alimento
     public void AddFood(Sprite food)
     {
         if (food == null) return;
 
-        // Evita adicionar duplicado
-        if (!foods.Contains(food))
-            foods.Add(food);
+        // Adiciona à lista
+        foods.Add(food);
+        currentIndex = foods.Count - 1; // seleciona o recém-adicionado
 
-        // Mostra o item e atualiza setas
-        ShowFood(food);
+        // Atualiza painel
+        panel.SetActive(true);
+        selectedFoodImage.enabled = true;
+        selectedFoodImage.sprite = food;
+
+        AtualizarSetas();
     }
 
-    public void ShowFood(Sprite food)
+    // Remove o alimento atual (quando comido)
+    public void RemoveCurrentFood()
     {
-        panel.SetActive(true);
-        isVisible = true;
+        if (foods.Count == 0) return;
 
-        if (food != null)
+        // Reset da comida arrastável
+        if (currentDraggableFood != null)
         {
-            selectedFoodImage.sprite = food;
-            selectedFoodImage.enabled = true;
-            currentIndex = foods.IndexOf(food);
+            currentDraggableFood.ResetPosition();
+            currentDraggableFood = null;
+        }
+
+        foods.RemoveAt(currentIndex);
+
+        if (foods.Count > 0)
+        {
+            // Ajusta índice e mostra próximo alimento
+            currentIndex = Mathf.Clamp(currentIndex, 0, foods.Count - 1);
+            ShowFood();
         }
         else
         {
+            // Lista vazia → esconde painel
             selectedFoodImage.sprite = null;
             selectedFoodImage.enabled = false;
-            currentIndex = -1;
+            panel.SetActive(false);
         }
 
         AtualizarSetas();
@@ -61,57 +82,37 @@ public class FoodSelector : MonoBehaviour
 
     public void NextFood()
     {
-        if (!isVisible || foods.Count <= 1) return;
-
-        currentIndex++;
-        if (currentIndex >= foods.Count) currentIndex = 0;
-
-        UpdateImage();
+        if (foods.Count <= 1) return;
+        currentIndex = (currentIndex + 1) % foods.Count;
+        ShowFood();
     }
 
     public void PreviousFood()
     {
-        if (!isVisible || foods.Count <= 1) return;
-
-        currentIndex--;
-        if (currentIndex < 0) currentIndex = foods.Count - 1;
-
-        UpdateImage();
+        if (foods.Count <= 1) return;
+        currentIndex = (currentIndex - 1 + foods.Count) % foods.Count;
+        ShowFood();
     }
 
-    private void UpdateImage()
+    private void ShowFood()
     {
-        if (currentIndex >= 0 && currentIndex < foods.Count && foods[currentIndex] != null)
-        {
-            selectedFoodImage.sprite = foods[currentIndex];
-            selectedFoodImage.enabled = true;
-        }
-        else
-        {
-            selectedFoodImage.sprite = null;
-            selectedFoodImage.enabled = false;
-        }
+        if (foods.Count == 0) return;
 
+        selectedFoodImage.enabled = true;
+        selectedFoodImage.sprite = foods[currentIndex];
         AtualizarSetas();
     }
 
     private void AtualizarSetas()
     {
-        // Mostra setas **só se houver pelo menos um item selecionado**
-        bool mostrarSetas = foods.Count > 0 && selectedFoodImage.sprite != null;
-        leftArrow.SetActive(mostrarSetas);
-        rightArrow.SetActive(mostrarSetas);
+        bool mostrar = foods.Count > 1;
+        leftArrow.SetActive(mostrar);
+        rightArrow.SetActive(mostrar);
     }
 
-    public void HideSelector()
+    public Sprite GetSelectedFood()
     {
-        isVisible = false;
-        panel.SetActive(false);
-        selectedFoodImage.sprite = null;
-        selectedFoodImage.enabled = false;
-        foods.Clear();
-
-        leftArrow.SetActive(false);
-        rightArrow.SetActive(false);
+        if (foods.Count == 0 || currentIndex < 0) return null;
+        return foods[currentIndex];
     }
 }
